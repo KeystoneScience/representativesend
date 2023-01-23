@@ -627,9 +627,7 @@ export default function Home() {
                 flexDirection: "row",
                 fontSize: 20,
                 textAlign: "left",
-                flex: 1,
               }}
-              className="justify-start items-start flex md:hidden"
             >
               <div style={{ fontSize: 20, textAlign: "left" }}>
                 Subject Line:
@@ -693,62 +691,6 @@ export default function Home() {
                 />
               ))}
             </div>
-            <div
-              class={{
-                flexDirection: "row",
-                fontSize: 20,
-                textAlign: "left",
-                flex: 1,
-              }}
-              className="justify-start items-start hidden md:flex"
-            >
-              <div style={{ fontSize: 20, textAlign: "left" }}>
-                Subject Line:
-              </div>
-              <input
-                className="text-sm border-2 border-blue-600 w-full md:w-96"
-                style={{
-                  backgroundColor: "white",
-                  height: 25,
-                  color: "black",
-                  padding: 2,
-                }}
-                value={subject}
-                onChange={(e) => {
-                  setSubject(e.target.value);
-                }}
-                placeholder={""}
-              />
-              <div style={{ fontSize: 20, textAlign: "left", marginTop: 10 }}>
-                Body:
-              </div>
-              <div
-                style={{
-                  fontSize: 15,
-                  textAlign: "left",
-                  marginTop: 3,
-                  marginBottom: 3,
-                }}
-              >
-                * the $LAST_NAME$ will be automatically changed to the
-                representative's last name.
-              </div>
-              <textarea
-                className="text-sm border-2 border-blue-600"
-                style={{
-                  backgroundColor: "white",
-                  width: "100%",
-                  height: 500,
-                  color: "black",
-                  padding: 2,
-                }}
-                value={body}
-                onChange={(e) => {
-                  setBody(e.target.value);
-                }}
-                placeholder={""}
-              />
-            </div>
           </div>
         </div>
       </main>
@@ -770,10 +712,6 @@ function Person(props) {
       }}
       className="w-full justify-center"
     >
-      <a href={props.link} style={{ width: 170 }}>
-        {props.name}
-      </a>
-      <div style={{ paddingLeft: 10, width: 220 }}>{props.email}</div>
       <div
         style={{
           padding: 10,
@@ -781,7 +719,9 @@ function Person(props) {
           color: "white",
           borderRadius: 5,
           cursor: "pointer",
+          fontSize: 15,
         }}
+        className="md:ml-5 mr-5"
         onClick={() => {
           setHasBeenClicked(true);
           props.sendMail({ email: props.email });
@@ -789,6 +729,10 @@ function Person(props) {
       >
         SEND EMAIL
       </div>
+      <a href={props.link} style={{ width: 170 }}>
+        {props.name}
+      </a>
+      <div style={{ paddingLeft: 10, width: 220 }}>{props.email}</div>
       {hasBeenClicked && (
         <div style={{ fontSize: 25, color: "#00A000", marginLeft: 10 }}>✓</div>
       )}
